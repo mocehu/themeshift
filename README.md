@@ -16,6 +16,18 @@
 - **输出可验证**：确定性压缩与回读自检；自检失败不发布新主题，CLI 返回非零退出码。
 - **受限上传与隔离**：每任务独立目录，有界队列、上传/解压/图像限额、路径穿越防护和过期清理。
 
+## 界面预览
+
+| ① 文件与方向 | ② 图标设置 |
+| --- | --- |
+| ![选择源主题并确认来源与目标平台](docs/screenshots/web-upload.png) | ![调整图标边距与主题信息](docs/screenshots/web-settings.png) |
+
+![任务结果：自检、统计与下载](docs/screenshots/web-result.png)
+
+<p align="center"><img src="docs/screenshots/web-mobile.png" width="340" alt="移动端布局"></p>
+
+<sub>截图由 Playwright 在本地服务上生成，使用合成测试素材。</sub>
+
 ## 安装与 Web 启动
 
 需要 Python 3.10+。在项目根目录运行：
