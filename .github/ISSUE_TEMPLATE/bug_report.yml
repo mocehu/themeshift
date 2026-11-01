@@ -1,0 +1,48 @@
+name: 缺陷报告
+description: 报告移植失败、输出不规范或程序错误
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请勿上传受版权保护的主题包。贴出目录结构、命令输出即可。
+  - type: input
+    id: version
+    attributes:
+      label: 版本
+      description: 运行 `themeshift --version` 的结果
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: 操作系统
+      options: [Windows, macOS, Linux]
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: 使用的命令
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望结果
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际结果
+      description: 请附完整输出（可用 `--debug`）
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: structure
+    attributes:
+      label: 源主题结构
+      description: 可粘贴 `themeshift inspect <file>` 的输出，或用文字描述条目

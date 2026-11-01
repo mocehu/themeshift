@@ -1,0 +1,9 @@
+# Normalize text files to LF so generated XML stays Unix-style on every OS.
+* text=auto eol=lf
+
+# Binary assets must never be converted.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.mtz binary
+*.hnt binary

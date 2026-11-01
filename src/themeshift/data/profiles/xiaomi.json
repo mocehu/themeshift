@@ -1,0 +1,24 @@
+{
+  "name": "xiaomi",
+  "display_name": "Xiaomi / MIUI",
+  "schema_version": 2,
+  "adapters": {
+    "source": {
+      "implementation": "themeshift.platforms.xiaomi:XiaomiSource",
+      "modules": ["icons", "dynamic_icons"]
+    }
+  },
+  "input_extensions": [".mtz"],
+  "description_entry": "description.xml",
+  "icons_entry": "icons",
+  "static_glob": "res/drawable*",
+  "dynamic_dir": "dynamic_icons",
+  "meta_fields": {
+    "title": ["title"],
+    "designer": ["designer", "author"],
+    "version": ["version"],
+    "title_en": ["title-en", "titleEn", "title_en"],
+    "brief_info": ["description", "briefInfo"],
+    "brief_info_en": ["description-en", "briefInfoEn"]
+  }
+}

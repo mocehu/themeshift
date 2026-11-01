@@ -1,0 +1,90 @@
+{
+  "source": "xiaomi",
+  "target": "honor",
+  "source_system": {
+    "prefixes": ["android", "com.miui.", "com.xiaomi.", "com.mipay."],
+    "exact": [
+      "com.android.browser",
+      "com.android.calculator2",
+      "com.android.calendar",
+      "com.android.camera",
+      "com.android.contacts",
+      "com.android.deskclock",
+      "com.android.email",
+      "com.android.fileexplorer",
+      "com.android.gallery3d",
+      "com.android.mms",
+      "com.android.music",
+      "com.android.providers.contacts",
+      "com.android.providers.downloads",
+      "com.android.providers.downloads.ui",
+      "com.android.providers.telephony",
+      "com.android.settings",
+      "com.android.soundrecorder",
+      "com.android.thememanager",
+      "com.android.voicedialer"
+    ]
+  },
+  "system_app_map": {
+    "com.hihonor.calculator": ["com.miui.calculator", "com.android.calculator2"],
+    "com.hihonor.contacts": ["com.android.contacts"],
+    "com.android.contacts.activities.DialtactsActivity": [
+      "com.android.contacts.activities.TwelveKeyDialer"
+    ],
+    "com.hihonor.email": ["com.android.email"],
+    "com.hihonor.photos": ["com.miui.gallery", "com.android.gallery3d"],
+    "com.hihonor.mms": ["com.android.mms"],
+    "com.android.settings": ["com.android.settings"],
+    "com.hihonor.notepad": ["com.miui.notes"],
+    "com.hihonor.soundrecorder": ["com.android.soundrecorder"],
+    "com.hihonor.android.clone": ["com.miui.huanji"],
+    "com.hihonor.android.thememanager": ["com.android.thememanager"],
+    "com.hihonor.camera": ["com.android.camera"],
+    "com.hihonor.appmarket": ["com.xiaomi.market"],
+    "com.hihonor.compass": ["com.miui.compass"],
+    "com.hihonor.filemanager": ["com.android.fileexplorer"],
+    "com.hihonor.vmall": [
+      "com.xiaomi.shop",
+      "com.xiaomi.shop.activity.MainTabActivity"
+    ],
+    "com.hihonor.systemmanager": ["com.miui.securitycenter"],
+    "com.hihonor.devicemanager": ["com.miui.securitycenter"],
+    "com.hihonor.devicefinder": ["com.miui.findmy"],
+    "com.hihonor.findmydevice": ["com.miui.findmy"],
+    "com.hihonor.health": ["com.xiaomi.hm.health"],
+    "com.hihonor.deskclock": ["com.android.deskclock"],
+    "com.hihonor.calendar": ["com.xiaomi.calendar", "com.android.calendar"],
+    "com.hihonor.android.totemweather": ["com.miui.weather2"],
+    "com.hihonor.android.FMRadio": ["com.miui.fmradio", "com.miui.fm"],
+    "com.hihonor.hncloud": ["com.xiaomi.mimobile"],
+    "com.hihonor.wallet": ["com.mipay.wallet"],
+    "com.honor.browser": ["com.android.browser", "com.miui.browser"],
+    "com.hihonor.youku.video": ["com.miui.video", "com.miui.videoplayer"]
+  },
+  "dynamic_assets": [
+    {
+      "source": "com.android.calendar/icon_bg.png",
+      "target": "com.android.calendar/ic_calendar_background.png"
+    },
+    {
+      "source": "com.hihonor.android.totemweather/ic_weather_background.png",
+      "target": "com.hihonor.android.totemweather/ic_weather_background.png"
+    },
+    {
+      "source": "com.hihonor.deskclock/deskclock_bg.png",
+      "target": "com.hihonor.deskclock/ic_deskclock_background.png"
+    },
+    {
+      "source": "com.hihonor.deskclock/ic_deskclock_hour.png",
+      "target": "com.hihonor.deskclock/ic_deskclock_hour.png"
+    },
+    {
+      "source": "com.hihonor.deskclock/ic_deskclock_minute.png",
+      "target": "com.hihonor.deskclock/ic_deskclock_minute.png"
+    },
+    {
+      "source": "com.hihonor.deskclock/ic_deskclock_second.png",
+      "target": "com.hihonor.deskclock/ic_deskclock_second.png"
+    }
+  ]
+}

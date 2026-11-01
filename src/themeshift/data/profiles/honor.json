@@ -1,0 +1,68 @@
+{
+  "name": "honor",
+  "display_name": "HONOR",
+  "schema_version": 2,
+  "adapters": {
+    "target": {
+      "implementation": "themeshift.platforms.honor:HonorTarget",
+      "modules": ["icons", "dynamic_icons"]
+    }
+  },
+  "output_extension": ".hnt",
+  "output_suffix": "_荣耀图标移植",
+  "report_suffix": "_荣耀图标包名映射",
+  "layout": {
+    "description": "description.xml",
+    "icons": "icons",
+    "preview_dir": "preview"
+  },
+  "icon": {
+    "canvas": 192,
+    "content": 172,
+    "background": [0, 0, 0, 0]
+  },
+  "description": {
+    "version": "1.0.0",
+    "brief_info_en": "Icon theme for HONOR.",
+    "extra_content_flag": "5"
+  },
+  "preview_background": "#F6F7FB",
+  "preview": [
+    {
+      "filename": "icon_small.jpg",
+      "width": 510,
+      "height": 345,
+      "columns": 3,
+      "rows": 2,
+      "icon_size": 100,
+      "start": 0
+    },
+    {
+      "filename": "icon_small_1.jpg",
+      "width": 640,
+      "height": 640,
+      "columns": 2,
+      "rows": 2,
+      "icon_size": 200,
+      "start": 0
+    },
+    {
+      "filename": "preview_icons_0.jpg",
+      "width": 1080,
+      "height": 2160,
+      "columns": 4,
+      "rows": 8,
+      "icon_size": 190,
+      "start": 0
+    },
+    {
+      "filename": "preview_icons_1.jpg",
+      "width": 1080,
+      "height": 2160,
+      "columns": 4,
+      "rows": 8,
+      "icon_size": 190,
+      "start": 32
+    }
+  ]
+}
