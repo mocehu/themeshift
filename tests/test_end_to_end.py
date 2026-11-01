@@ -4,10 +4,12 @@ from __future__ import annotations
 
 import io
 import json
+import sys
 import tempfile
 import unittest
 import zipfile
 from pathlib import Path
+from unittest.mock import patch
 
 from PIL import Image
 
@@ -141,6 +143,14 @@ class EndToEndTest(unittest.TestCase):
             self.assertIn("com.honor.browser.png", names)
             self.assertNotIn("com.hihonor.magichome.png", names)
             self.assertNotIn("com.xiaomi.smarthome.png", names)
+
+    def test_cli_switches_non_utf8_streams_to_utf8(self) -> None:
+        # Windows consoles default to a legacy codec; Chinese output must not crash.
+        buffer = io.BytesIO()
+        stream = io.TextIOWrapper(buffer, encoding="cp1252", errors="strict")
+        with patch.object(sys, "stdout", stream), patch.object(sys, "stderr", stream):
+            self.assertEqual(main(["platforms", "--quiet"]), 0)
+            self.assertEqual(stream.encoding.lower(), "utf-8")
 
     def test_package_filter_limits_system_icons(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

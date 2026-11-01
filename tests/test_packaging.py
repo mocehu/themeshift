@@ -20,6 +20,7 @@ from themeshift.packaging import (
     DEFAULT_ARCHIVE_LIMITS,
     FIXED_TIMESTAMP,
     ArchiveLimits,
+    _SeekableSpool,
     extract_nested_zip,
     extract_prefix,
     has_dos_attributes,
@@ -526,6 +527,19 @@ class SafeExtractionTest(unittest.TestCase):
         write_zip(archive_path, [("preview/", payload), ("preview/x.png", payload)])
         with zipfile.ZipFile(archive_path) as archive:
             self.assertEqual(archive.namelist(), ["preview/", "preview/x.png"])
+
+    def test_nested_spool_stays_compatible_with_zipfile(self) -> None:
+        # Python 3.10's SpooledTemporaryFile lacks seekable(), which zipfile
+        # reads directly; the wrapper must keep nested archives working.
+        with _SeekableSpool(max_size=1024, mode="w+b") as spool:
+            self.assertTrue(spool.seekable())
+            self.assertTrue(spool.readable())
+            self.assertTrue(spool.writable())
+            with zipfile.ZipFile(spool, "w") as archive:
+                archive.writestr("icon.png", b"payload")
+            spool.seek(0)
+            with zipfile.ZipFile(spool) as archive:
+                self.assertEqual(archive.read("icon.png"), b"payload")
 
     def test_limits_must_be_positive_integers(self) -> None:
         for value in (0, -1, True, 1.5):

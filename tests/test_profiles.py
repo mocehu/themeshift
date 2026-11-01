@@ -292,11 +292,11 @@ class ProfileRepositoryTest(unittest.TestCase):
 
     def test_reverse_mapping_is_never_inferred_from_forward_file(self) -> None:
         forward = self.write_mapping("alpha", "beta", {"source": "alpha", "target": "beta"})
-        self.assertEqual(self.repository.mapping_path("alpha", "beta"), forward)
+        self.assertEqual(self.repository.mapping_path("alpha", "beta").resolve(), forward.resolve())
         with self.assertRaises(ConfigError):
             self.repository.mapping_path("beta", "alpha")
         reverse = self.write_mapping("beta", "alpha", {"source": "beta", "target": "alpha"})
-        self.assertEqual(self.repository.mapping_path("beta", "alpha"), reverse)
+        self.assertEqual(self.repository.mapping_path("beta", "alpha").resolve(), reverse.resolve())
         self.assertNotEqual(forward, reverse)
 
     def test_mapping_direction_fields_must_match_filename_and_request(self) -> None:

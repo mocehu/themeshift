@@ -35,6 +35,24 @@ DOS_ARCHIVE_ATTRIBUTE = 0x20
 DOS_DIRECTORY_ATTRIBUTE = 0x10
 
 
+class _SeekableSpool(tempfile.SpooledTemporaryFile):
+    """Spooled file that also works with zipfile on Python 3.10.
+
+    ``SpooledTemporaryFile.seekable`` only appeared in Python 3.11, but
+    ``zipfile.ZipFile`` reads ``file.seekable`` directly when given a file
+    object, so nested archives would fail on the oldest supported runtime.
+    """
+
+    def seekable(self) -> bool:
+        return True
+
+    def readable(self) -> bool:
+        return True
+
+    def writable(self) -> bool:
+        return True
+
+
 def has_dos_attributes(info: zipfile.ZipInfo) -> bool:
     """Whether an entry records a Windows/DOS attribute byte and FAT origin.
 
@@ -351,7 +369,7 @@ def extract_nested_zip(
 
     with (
         _open_archive(archive_path, limits) as outer,
-        tempfile.SpooledTemporaryFile(max_size=8 * _MIB, mode="w+b") as payload,
+        _SeekableSpool(max_size=8 * _MIB, mode="w+b") as payload,
     ):
         _copy_member(outer, _entry(outer, entry), payload, limits.max_archive_bytes, limits)
         payload.seek(0)

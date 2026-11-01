@@ -161,7 +161,21 @@ def _cmd_serve(args: argparse.Namespace) -> int:
     return 0
 
 
+def _configure_text_output() -> None:
+    """Keep Chinese output usable on consoles whose default codec is not UTF-8."""
+
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is None:
+            continue
+        try:
+            reconfigure(encoding="utf-8", errors="replace")
+        except (OSError, ValueError):
+            continue
+
+
 def main(argv: list[str] | None = None) -> int:
+    _configure_text_output()
     raw = list(sys.argv[1:] if argv is None else argv)
     args = _build_parser().parse_args(_normalize_argv(raw))
     configure("debug" if args.debug else ("quiet" if args.quiet else "info"))
